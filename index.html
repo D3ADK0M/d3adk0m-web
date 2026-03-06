@@ -161,7 +161,54 @@
             <section id="comunidad">
                 <h2># Comunidad</h2>
                 <p>La comunidad de d3adk0m se basa en la confianza. El acceso está restringido a miembros invitados, pero siempre estamos abiertos a conocer nuevos perfiles con talento que quieran aportar valor.</p>
+                
+                <div class="form-container">
+                    <form action="https://formspree.io/f/mojkqnlk" method="POST">
+                        <input type="text" name="name" placeholder="Tu apodo o nombre..." required>
+                        <input type="email" name="email" placeholder="Tu email de contacto..." required>
+                        <textarea name="message" rows="4" placeholder="Cuéntanos por qué quieres unirte y qué puedes aportar..." required></textarea>
+                        <button type="submit">ENVIAR SOLICITUD_</button>
+                    </form>
+                </div>
             </section>
+            
+            <style>
+                .form-container {
+                    margin-top: 25px;
+                    background: rgba(168, 230, 207, 0.05);
+                    padding: 20px;
+                    border: 1px dashed rgba(168, 230, 207, 0.3);
+                    border-radius: 4px;
+                }
+                input, textarea {
+                    width: 100%;
+                    padding: 10px;
+                    margin-bottom: 15px;
+                    background: #111;
+                    border: 1px solid #333;
+                    color: #a8e6cf;
+                    font-family: 'Courier New', Courier, monospace;
+                    box-sizing: border-box;
+                }
+                input:focus, textarea:focus {
+                    outline: none;
+                    border-color: #a8e6cf;
+                }
+                button {
+                    background-color: #a8e6cf;
+                    color: #000;
+                    border: none;
+                    padding: 10px 20px;
+                    font-family: 'Courier New', Courier, monospace;
+                    font-weight: bold;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                }
+                button:hover {
+                    background-color: #ffffff;
+                    box-shadow: 0 0 10px #a8e6cf;
+                }
+            </style>
         </div>
     </div>
 
