@@ -5,20 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>d3adk0m - Linux, Security & OpenSource</title>
     <style>
-        /* Estilos base con estética Hacker (Negro y Verde) */
+        /* Estilos base con estética Hacker (Fiel al Logo d3adk0m) */
         body {
             background-color: #000000; /* Fondo negro absoluto */
-            color: #00ff00; /* Texto verde neón */
-            font-family: 'Courier New', Courier, monospace; /* Fuente monoespaciada tipo terminal */
+            /* COLOR VERDE PASTEL DEL LOGO */
+            color: #a8e6cf; 
+            font-family: 'Courier New', Courier, monospace; /* Fuente monoespaciada */
             margin: 0;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            /* Tamaño de letra base reducido */
+            font-size: 14px; 
         }
 
         /* Contenedor principal */
         .container {
-            max-width: 900px;
+            max-width: 800px; /* Un poco más estrecho para mayor legibilidad */
             margin: 0 auto;
             padding: 20px;
             flex: 1;
@@ -27,18 +30,18 @@
 
         /* Estilos del Logo */
         .logo {
-            max-width: 300px; /* Ajusta el tamaño del logo */
+            max-width: 250px; /* Tamaño del logo ligeramente reducido */
             height: auto;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            border-radius: 10px; /* Un poco redondeado para que quede mejor */
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-radius: 8px; /* Redondeado sutil */
         }
 
         /* Estilos del Menú */
         nav {
-            background-color: #111; /* Un negro ligeramente más claro para el menú */
-            padding: 15px 0;
-            border-bottom: 2px solid #00ff00; /* Línea verde inferior */
+            background-color: #111; /* Negro claro para el menú */
+            padding: 10px 0; /* Un poco más compacto */
+            border-bottom: 2px solid #a8e6cf; /* Línea verde pastel */
         }
 
         nav ul {
@@ -47,46 +50,62 @@
             padding: 0;
             display: flex;
             justify-content: center;
-            gap: 25px; /* Espacio entre elementos */
+            gap: 20px; /* Espacio entre elementos reducido */
         }
 
         nav ul li a {
             text-decoration: none;
-            color: #00ff00;
+            color: #a8e6cf; /* Color verde pastel */
             font-weight: bold;
-            font-size: 1.1em;
-            transition: color 0.3s ease;
+            font-size: 0.95em; /* Letra del menú más pequeña */
+            transition: all 0.3s ease;
         }
 
-        /* Efecto al pasar el ratón por el menú */
+        /* Efecto al pasar el ratón por el menú (Texto blanco con brillo) */
         nav ul li a:hover {
-            color: #ffffff; /* El texto se vuelve blanco */
-            text-shadow: 0 0 10px #00ff00; /* Brillo verde */
+            color: #ffffff; 
+            text-shadow: 0 0 8px #a8e6cf; 
         }
 
         /* Estilos del texto de bienvenida */
         .welcome-text {
-            font-size: 1.2em;
+            /* Tamaño de letra del texto reducido de 1.2em a 1em */
+            font-size: 1em; 
             line-height: 1.6;
-            margin-top: 40px;
-            background: rgba(0, 255, 0, 0.05); /* Un fondo verde muy tenue */
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid rgba(0, 255, 0, 0.2);
-            text-align: justify; /* Texto justificado para mayor legibilidad */
+            margin-top: 30px;
+            background: rgba(168, 230, 207, 0.03); /* Fondo verde pastel muy tenue */
+            padding: 18px;
+            border-radius: 6px;
+            border: 1px solid rgba(168, 230, 207, 0.15);
+            text-align: justify; /* Texto justificado */
         }
 
         .welcome-text strong {
-            color: #ffffff; /* Resaltar d3adk0m en blanco */
+            color: #ffffff; /* d3adk0m se resalta en blanco */
+        }
+
+        /* Efecto de cursor parpadeante al final del texto */
+        .cursor {
+            display: inline-block;
+            width: 1ch;
+            background-color: #a8e6cf;
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+            height: 1em;
+            margin-left: 3px;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
         }
 
         /* Pie de página */
         footer {
             text-align: center;
-            padding: 20px;
-            font-size: 0.8em;
-            color: #555;
-            border-top: 1px solid #222;
+            padding: 15px;
+            font-size: 0.75em; /* Letra del footer más pequeña */
+            color: #444; /* Gris muy oscuro */
+            border-top: 1px solid #1a1a1a;
         }
     </style>
 </head>
@@ -105,12 +124,12 @@
         <img src="logo.png" alt="d3adk0m Logo" class="logo">
 
         <div class="welcome-text">
-            Bienvenido a la comunidad de <strong>d3adk0m</strong>. Si has accedido a este sitio web seguramente es porque has sido invitado por alguno de nuestros miembros. Si no es así, puedes navegar libremente por nuestro sitio e infórmate de quiénes somos y de todas las actividades que realizamos. Luego, si te interesa, puedes unirte a nosotros a través de una solicitud desde esta misma web.
+            Bienvenido a la comunidad de <strong>d3adk0m</strong>. Si has accedido a este sitio web seguramente es porque has sido invitado por alguno de nuestros miembros. Si no es así, puedes navegar libremente por nuestro sitio e infórmate de quiénes somos y de todas las actividades que realizamos. Luego, si te interesa, puedes unirte a nosotros a través de una solicitud desde esta misma web<span class="cursor">|</span>
         </div>
     </div>
 
     <footer>
-        [root@d3adk0m:~#] &copy; 2024 d3adk0m community. All rights reserved.
+        [root@d3adk0m:~#] &copy; 2024 d3adk0m community. Todos los derechos reservados.
     </footer>
 
 </body>
