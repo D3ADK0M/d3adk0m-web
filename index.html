@@ -3,102 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D3ADK0M | Terminal</title>
+    <title>d3adk0m - Linux, Security & OpenSource</title>
     <style>
-        :root {
-            --matrix-green: #00ff41;
-            --dark-bg: #0d0d0d;
-        }
-
+        /* Estilos base con estética Hacker (Negro y Verde) */
         body {
-            background-color: var(--dark-bg);
-            color: var(--matrix-green);
-            font-family: 'Courier New', Courier, monospace;
+            background-color: #000000; /* Fondo negro absoluto */
+            color: #00ff00; /* Texto verde neón */
+            font-family: 'Courier New', Courier, monospace; /* Fuente monoespaciada tipo terminal */
+            margin: 0;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
+            min-height: 100vh;
         }
 
+        /* Contenedor principal */
         .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
             text-align: center;
-            border: 1px solid var(--matrix-green);
-            padding: 40px;
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
-            max-width: 600px;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            letter-spacing: 5px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .status {
-            margin-bottom: 30px;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        .status::before {
-            content: "> ";
-        }
-
-        .links {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            color: var(--dark-bg);
-            background-color: var(--matrix-green);
-            text-decoration: none;
-            padding: 10px 20px;
-            font-weight: bold;
-            border: 1px solid var(--matrix-green);
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: var(--dark-bg);
-            color: var(--matrix-green);
-            box-shadow: 0 0 15px var(--matrix-green);
-        }
-
-        .footer {
+        /* Estilos del Logo */
+        .logo {
+            max-width: 300px; /* Ajusta el tamaño del logo */
+            height: auto;
             margin-top: 40px;
-            font-size: 0.7rem;
+            margin-bottom: 20px;
+            border-radius: 10px; /* Un poco redondeado para que quede mejor */
+        }
+
+        /* Estilos del Menú */
+        nav {
+            background-color: #111; /* Un negro ligeramente más claro para el menú */
+            padding: 15px 0;
+            border-bottom: 2px solid #00ff00; /* Línea verde inferior */
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 25px; /* Espacio entre elementos */
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #00ff00;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        /* Efecto al pasar el ratón por el menú */
+        nav ul li a:hover {
+            color: #ffffff; /* El texto se vuelve blanco */
+            text-shadow: 0 0 10px #00ff00; /* Brillo verde */
+        }
+
+        /* Estilos del texto de bienvenida */
+        .welcome-text {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-top: 40px;
+            background: rgba(0, 255, 0, 0.05); /* Un fondo verde muy tenue */
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 255, 0, 0.2);
+            text-align: justify; /* Texto justificado para mayor legibilidad */
+        }
+
+        .welcome-text strong {
+            color: #ffffff; /* Resaltar d3adk0m en blanco */
+        }
+
+        /* Pie de página */
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8em;
             color: #555;
+            border-top: 1px solid #222;
         }
     </style>
 </head>
 <body>
 
+    <nav>
+        <ul>
+            <li><a href="#quienes-somos">#Quiénes somos</a></li>
+            <li><a href="#que-hacemos">#Qué hacemos</a></li>
+            <li><a href="#proyectos">#Proyectos</a></li>
+            <li><a href="#comunidad">#Comunidad</a></li>
+        </ul>
+    </nav>
+
     <div class="container">
-        <h1>D3ADK0M</h1>
-        <p class="status">Sistemas Matrix/Element: ONLINE</p>
-        
-        <div class="links">
-            <a href="https://element.d3adk0m.com" class="btn">ACCEDER A ELEMENT</a>
-            
-            <a href="https://matrix.d3adk0m.com/synapse-admin/#/login" class="btn">ADMIN PANEL</a>
+        <img src="logo.png" alt="d3adk0m Logo" class="logo">
+
+        <div class="welcome-text">
+            Bienvenido a la comunidad de <strong>d3adk0m</strong>. Si has accedido a este sitio web seguramente es porque has sido invitado por alguno de nuestros miembros. Si no es así, puedes navegar libremente por nuestro sitio e infórmate de quiénes somos y de todas las actividades que realizamos. Luego, si te interesa, puedes unirte a nosotros a través de una solicitud desde esta misma web.
         </div>
-
-        <p style="margin-top: 30px; font-size: 0.8rem;">
-            Dominio principal gestionado vía GitHub Pages.<br>
-            Servicios federados alojados en Hetzner Cloud.
-        </p>
     </div>
 
-    <div class="footer">
-        © 2026 D3ADK0M - Establishing connection...
-    </div>
+    <footer>
+        [root@d3adk0m:~#] &copy; 2024 d3adk0m community. All rights reserved.
+    </footer>
 
 </body>
 </html>
