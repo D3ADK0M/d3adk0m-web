@@ -170,14 +170,54 @@
                 <p>La comunidad de <strong>d3adk0m</strong> se basa en la confianza. El <strong>acceso está restringido a miembros invitados</strong>, pero siempre estamos abiertos a conocer nuevos perfiles con <strong>interés sincero</strong> y <strong>ganas de aprender</strong> que quieran formar parte de nuesta comunidad.</p>
                 
                 <div class="form-container">
-                    <form action="http://api.d3adk0m.com/enviar" method="POST">
+                    <form id="contactForm">
                         <input type="text" name="name" placeholder="Tu nickname o nombre..." required>
                         <input type="email" name="email" placeholder="Tu email de contacto..." required>
-                        <textarea name="message" rows="4" placeholder="Cuéntanos por qué quieres unirte a nuestra comunidad..." required></textarea>
-                        <button type="submit">ENVIAR SOLICITUD_</button>
+                        <textarea name="message" rows="4" placeholder="Cuéntanos por qué quieres unirte..." required></textarea>
+                        <button type="submit" id="btnEnviar">ENVIAR SOLICITUD_</button>
                     </form>
+                    <div id="statusMessage" style="margin-top: 15px; display: none; font-weight: bold;"></div>
                 </div>
             </section>
+            
+            <script>
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault(); 
+                
+                const btn = document.getElementById('btnEnviar');
+                const status = document.getElementById('statusMessage');
+                const formData = new FormData(this);
+            
+                btn.innerText = "ENVIANDO...";
+                btn.disabled = true;
+            
+                // Usamos la IP de Hetzner mientras se propaga el subdominio de Porkbun
+                fetch('http://89.167.49.83:5000/enviar', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (response.ok) {
+                        status.innerHTML = "✓ SOLICITUD ENVIADA CON ÉXITO.";
+                        status.style.color = "#a8e6cf";
+                        this.reset(); 
+                    } else {
+                        status.innerHTML = "✗ ERROR EN EL SERVIDOR.";
+                        status.style.color = "#ff5555";
+                    }
+                    status.style.display = "block";
+                    btn.innerText = "ENVIAR SOLICITUD_";
+                    btn.disabled = false;
+                })
+                .catch(error => {
+                    status.innerHTML = "✗ ERROR DE CONEXIÓN.";
+                    status.style.color = "#ff5555";
+                    status.style.display = "block";
+                    btn.innerText = "ENVIAR SOLICITUD_";
+                    btn.disabled = false;
+                });
+            });
+            </script>
             
             <style>
                 .form-container {
