@@ -21,12 +21,12 @@
             font-size: 14px; 
         }
 
-        /* MENÚ DE NAVEGACIÓN FIJO */
+        /* MENÚ DE NAVEGACIÓN FIJO Y RESPONSIVO */
         nav {
             background-color: #111;
             padding: 10px 0;
             border-bottom: 2px solid #a8e6cf;
-            position: sticky; /* Se queda arriba al bajar */
+            position: sticky;
             top: 0;
             z-index: 1000;
         }
@@ -48,6 +48,21 @@
         nav ul li a:hover {
             color: #ffffff;
             text-shadow: 0 0 8px #a8e6cf;
+        }
+
+        /* LÓGICA PARA MÓVILES (Menú en pila) */
+        @media screen and (max-width: 600px) {
+            nav ul {
+                flex-direction: column; /* Apila los elementos */
+                align-items: center;
+                gap: 15px;
+                padding: 10px 0;
+            }
+            nav ul li a {
+                font-size: 1.1em;
+                display: block;
+                padding: 5px 0;
+            }
         }
 
         /* CONTENEDOR PRINCIPAL */
