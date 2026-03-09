@@ -50,18 +50,24 @@
             text-shadow: 0 0 8px #a8e6cf;
         }
 
-        /* LÓGICA PARA MÓVILES (Menú en pila) */
+        /* LÓGICA PARA MÓVILES (Scroll horizontal) */
         @media screen and (max-width: 600px) {
             nav ul {
-                flex-direction: column; /* Apila los elementos */
-                align-items: center;
-                gap: 15px;
-                padding: 10px 0;
+                justify-content: flex-start; /* Alinea al principio */
+                overflow-x: auto;            /* Activa el scroll horizontal */
+                white-space: nowrap;         /* Evita que las palabras bajen de línea */
+                padding: 10px 20px;
+                gap: 25px;
+                -webkit-overflow-scrolling: touch; /* Suavidad en iPhone */
             }
-            nav ul li a {
-                font-size: 1.1em;
-                display: block;
-                padding: 5px 0;
+            nav ul::-webkit-scrollbar {
+                display: none;               /* Oculta la barra de scroll para que quede estético */
+            }
+            nav ul li {
+                flex: 0 0 auto;              /* Evita que los botones se encojan */
+            }
+            section {
+                scroll-margin-top: 80px;     /* El nav es bajito, no hace falta tanto margen */
             }
         }
 
