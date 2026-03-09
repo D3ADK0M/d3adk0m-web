@@ -169,90 +169,51 @@
                 <h2># Comunidad</h2>
                 <p>La comunidad de <strong>d3adk0m</strong> se basa en la confianza. El <strong>acceso está restringido a miembros invitados</strong>, pero siempre estamos abiertos a conocer nuevos perfiles con <strong>interés sincero</strong> y <strong>ganas de aprender</strong> que quieran formar parte de nuesta comunidad.</p>
                 
-                <div class="form-container">
-                    <form id="contactForm">
-                        <input type="text" name="name" placeholder="Tu nickname o nombre..." required>
-                        <input type="email" name="email" placeholder="Tu email de contacto..." required>
-                        <textarea name="message" rows="4" placeholder="Cuéntanos por qué quieres unirte..." required></textarea>
-                        <button type="submit" id="btnEnviar">ENVIAR SOLICITUD_</button>
-                    </form>
-                    <div id="statusMessage" style="margin-top: 15px; display: none; font-weight: bold;"></div>
+                <div class="contacto-container">
+                    <h3>¿Quieres unirte a la comunidad?</h3>
+                    <p>Únete a nuestro grupo de recepción en Telegram para obtener tu invitación a Element.</p>
+                    <a href="https://t.me/tu_enlace_de_grupo" class="btn-telegram">
+                        <span>✈️</span> Entrar al Grupo de Recepción
+                    </a>
                 </div>
             </section>
             
-            <script>
-            document.getElementById('contactForm').addEventListener('submit', function(e) {
-                e.preventDefault(); 
-                
-                const btn = document.getElementById('btnEnviar');
-                const status = document.getElementById('statusMessage');
-                const formData = new FormData(this);
-            
-                btn.innerText = "ENVIANDO...";
-                btn.disabled = true;
-            
-                fetch('https://api.d3adk0m.com/enviar', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => {
-                    if (response.ok) {
-                        status.innerHTML = "✓ SOLICITUD ENVIADA CON ÉXITO.";
-                        status.style.color = "#a8e6cf";
-                        this.reset(); 
-                    } else {
-                        status.innerHTML = "✗ ERROR EN EL SERVIDOR.";
-                        status.style.color = "#ff5555";
-                    }
-                    status.style.display = "block";
-                    btn.innerText = "ENVIAR SOLICITUD_";
-                    btn.disabled = false;
-                })
-                .catch(error => {
-                    status.innerHTML = "✗ ERROR DE CONEXIÓN.";
-                    status.style.color = "#ff5555";
-                    status.style.display = "block";
-                    btn.innerText = "ENVIAR SOLICITUD_";
-                    btn.disabled = false;
-                });
-            });
-            </script>
             
             <style>
-                .form-container {
-                    margin-top: 25px;
+                /* Contenedor principal de la llamada a la acción */
+                .contacto-container {
+                    margin-top: 30px;
                     background: rgba(168, 230, 207, 0.05);
-                    padding: 20px;
+                    padding: 30px;
                     border: 1px dashed rgba(168, 230, 207, 0.3);
                     border-radius: 4px;
+                    text-align: center; /* Centra el contenido para que destaque */
                 }
-                input, textarea {
-                    width: 100%;
-                    padding: 10px;
-                    margin-bottom: 15px;
-                    background: #111;
-                    border: 1px solid #333;
-                    color: #a8e6cf;
-                    font-family: 'Courier New', Courier, monospace;
-                    box-sizing: border-box;
-                }
-                input:focus, textarea:focus {
-                    outline: none;
-                    border-color: #a8e6cf;
-                }
-                button {
+                
+                /* Estilo del botón de Telegram */
+                .btn-telegram {
+                    display: inline-block;
                     background-color: #a8e6cf;
-                    color: #000;
-                    border: none;
-                    padding: 10px 20px;
+                    color: #000 !important; /* Forzamos el color negro para que se lea bien */
+                    text-decoration: none;
+                    padding: 15px 30px;
                     font-family: 'Courier New', Courier, monospace;
                     font-weight: bold;
-                    cursor: pointer;
-                    transition: all 0.3s;
+                    border-radius: 4px;
+                    transition: all 0.3s ease;
+                    margin-top: 15px;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
                 }
-                button:hover {
+                
+                .btn-telegram:hover {
                     background-color: #ffffff;
-                    box-shadow: 0 0 10px #a8e6cf;
+                    box-shadow: 0 0 20px rgba(168, 230, 207, 0.6);
+                    transform: translateY(-2px); /* Un pequeño efecto de elevación */
+                }
+                
+                .btn-telegram span {
+                    margin-right: 10px;
                 }
             </style>
         </div>
