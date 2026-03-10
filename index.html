@@ -219,13 +219,13 @@
     
         <script>
             const logs = [
-                "[SYSTEM] Iniciando sistema...",
-                "[SYSTEM] Comprobando integridad de red...",
-                "[SYSTEM] Conexión segura establecida.",
-                "[SYSTEM] Escaneando entorno de usuario...",
-                "[SYSTEM] Ubicación detectada.",
-                "[SYSTEM] Acceso nivel: GUEST",
-                "[SYSTEM] Listo para comandos."
+                "#[root@d3adk0m:~#] Iniciando sistema...",
+                "#[root@d3adk0m:~#] Comprobando integridad de red...",
+                "#[root@d3adk0m:~#] Conexión segura establecida.",
+                "#[root@d3adk0m:~#] Escaneando entorno de usuario...",
+                "#[root@d3adk0m:~#] Ubicación detectada.",
+                "#[root@d3adk0m:~#] Acceso nivel: GUEST",
+                "#[root@d3adk0m:~#] Listo para comandos."
             ];
         
             const textOutput = document.getElementById('text-output');
@@ -245,7 +245,7 @@
                     await typeEffect(message);
                     await new Promise(resolve => setTimeout(resolve, 1000)); // Espera 1 segundo entre mensajes
                 }
-                textOutput.textContent = "> Awaiting input..."; // Mensaje final
+                textOutput.textContent = "[root@d3adk0m:~#] Awaiting input..."; // Mensaje final
             }
         
             window.onload = startBootSequence;
