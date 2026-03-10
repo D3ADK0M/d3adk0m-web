@@ -144,6 +144,16 @@
             color: #444;
         }
         footer a { color: #666; text-decoration: none; }
+
+        .terminal-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background-color: #a8e6cf;
+            vertical-align: middle;
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
     
     </style>
 </head>
