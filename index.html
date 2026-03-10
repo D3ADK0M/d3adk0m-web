@@ -162,19 +162,31 @@
     </div>
 
     <footer>
-        &copy; 1998 - 2026 d3adk0m group. All rights reserved.
+        [root@d3adk0m:~#] 2026 d3adk0m community. 
+        <br>
+        Este proyecto es <strong>Open Source</strong>. Siéntete libre de colaborar, compartir y aprender.
     </footer>
 
     <script>
-        // Captura de IP real del visitante
-        fetch('https://api.ipify.org')
-            .then(res => res.json())
-            .then(data => {
-                document.getElementById('ip-addr').textContent = data.ip;
-            })
-            .catch(() => {
-                document.getElementById('ip-addr').textContent = "LOCAL_ENV";
-            });
+        async function getIP() {
+            const el = document.getElementById('ip-addr');
+            try {
+                // Intento 1: ipify
+                let response = await fetch('https://api.ipify.org');
+                let data = await response.json();
+                el.textContent = data.ip;
+            } catch (e) {
+                try {
+                    // Intento 2: icanhazip (alternativa)
+                    let response = await fetch('https://icanhazip.com');
+                    let text = await response.text();
+                    el.textContent = text.trim();
+                } catch (e2) {
+                    el.textContent = "ACCESO_ANÓNIMO";
+                }
+            }
+        }
+        getIP();
     </script>
 </body>
 </html>
