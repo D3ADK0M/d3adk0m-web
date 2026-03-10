@@ -220,20 +220,20 @@
     
         <script>
             const logs = [
-                "> [root@d3adk0m:~#] Iniciando sistema...",
-                "> [root@d3adk0m:~#] Comprobando integridad de red...",
-                "> [root@d3adk0m:~#] Conexión segura establecida.",
-                "> [root@d3adk0m:~#] Escaneando entorno de usuario...",
-                "> [root@d3adk0m:~#] Ubicación detectada.",
-                "> [root@d3adk0m:~#] Acceso nivel: GUEST",
-                "> [root@d3adk0m:~#] Listo para comandos."
+                "[root@d3adk0m:~#] Iniciando sistema...",
+                "[root@d3adk0m:~#] Comprobando integridad...",
+                "[root@d3adk0m:~#] Conexión segura...",
+                "[root@d3adk0m:~#] Escaneando entorno...",
+                "[root@d3adk0m:~#] Ubicación detectada",
+                "[root@d3adk0m:~#] Acceso nivel: GUEST",
+                "[root@d3adk0m:~#] Listo para comandos"
             ];
         
             const textOutput = document.getElementById('text-output');
         
             // Función para escribir letra a letra
             async function typeEffect(text, speed = 50) {
-                textOutput.textContent = ""; // Limpiamos el texto anterior
+                textOutput.textContent = ""; 
                 for (let i = 0; i < text.length; i++) {
                     textOutput.textContent += text.charAt(i);
                     await new Promise(resolve => setTimeout(resolve, speed));
@@ -244,9 +244,9 @@
             async function startBootSequence() {
                 for (const message of logs) {
                     await typeEffect(message);
-                    await new Promise(resolve => setTimeout(resolve, 1000)); // Espera 1 segundo entre mensajes
+                    await new Promise(resolve => setTimeout(resolve, 1000)); 
                 }
-                textOutput.textContent = "> [root@d3adk0m:~#] Awaiting input..."; // Mensaje final
+                textOutput.textContent = "[root@d3adk0m:~#] Awaiting input..."; 
             }
         
             window.onload = startBootSequence;
