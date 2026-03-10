@@ -224,32 +224,31 @@
             const logs = [
                 "[SYSTEM] Iniciando sistema...",
                 "[SYSTEM] Comprobando integridad de red...",
-                "[SYSTEM] Conexión establecida.",
+                "[SYSTEM] Conexión segura establecida.",
                 "[SYSTEM] Escaneando entorno de usuario...",
                 "[SYSTEM] Ubicación detectada.",
                 "[SYSTEM] Acceso nivel: GUEST",
                 "[SYSTEM] Listo para comandos."
             ];
         
-            const consoleDiv = document.getElementById('boot-console');
-            
-            function startBootSequence() {
-                let i = 0;
-                
-                // Función para mostrar el siguiente mensaje
-                const updateLog = () => {
-                    if (i < logs.length) {
-                        consoleDiv.textContent = logs[i];
-                        i++;
-                        // Cambia el número 1500 (1.5 segundos) para que vaya más rápido o lento
-                        setTimeout(updateLog, 1500); 
-                    } else {
-                        // Opcional: limpiar la consola al terminar o dejar el último mensaje
-                        consoleDiv.textContent = "> Awaiting input...";
-                    }
-                };
+            const textOutput = document.getElementById('text-output');
         
-                updateLog();
+            // Función para escribir letra a letra
+            async function typeEffect(text, speed = 50) {
+                textOutput.textContent = ""; // Limpiamos el texto anterior
+                for (let i = 0; i < text.length; i++) {
+                    textOutput.textContent += text.charAt(i);
+                    await new Promise(resolve => setTimeout(resolve, speed));
+                }
+            }
+        
+            // Flujo principal
+            async function startBootSequence() {
+                for (const message of logs) {
+                    await typeEffect(message);
+                    await new Promise(resolve => setTimeout(resolve, 1000)); // Espera 1 segundo entre mensajes
+                }
+                textOutput.textContent = "> Awaiting input..."; // Mensaje final
             }
         
             window.onload = startBootSequence;
