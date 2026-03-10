@@ -3,16 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>d3adk0m - Linux, Security & OpenSource</title>
+    <title>d3adk0m - Restricted Access</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
-        /* CONFIGURACIÓN GLOBAL */
-        html {
-            scroll-behavior: smooth; /* Desplazamiento suave al usar el menú */
-        }
         body {
             background-color: #000000;
-            color: #a8e6cf; /* Verde pastel del logo */
+            color: #a8e6cf; 
             font-family: 'Courier New', Courier, monospace;
             margin: 0;
             display: flex;
@@ -21,227 +17,163 @@
             font-size: 14px; 
         }
 
-        /* MENÚ DE NAVEGACIÓN FIJO Y RESPONSIVO */
+        /* CABECERA TÉCNICA (NUEVO NAV) */
         nav {
             background-color: #111;
-            padding: 10px 0;
+            padding: 12px 20px;
             border-bottom: 2px solid #a8e6cf;
             position: sticky;
             top: 0;
             z-index: 1000;
-        }
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
             display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: #a8e6cf;
-            font-weight: bold;
-            font-size: 0.95em;
-            transition: all 0.3s ease;
-        }
-        nav ul li a:hover {
-            color: #ffffff;
-            text-shadow: 0 0 8px #a8e6cf;
-        }
-
-        /* LÓGICA PARA MÓVILES (Scroll horizontal) */
-        @media screen and (max-width: 600px) {
-            nav ul {
-                justify-content: flex-start; /* Alinea al principio */
-                overflow-x: auto;            /* Activa el scroll horizontal */
-                white-space: nowrap;         /* Evita que las palabras bajen de línea */
-                padding: 10px 20px;
-                gap: 25px;
-                -webkit-overflow-scrolling: touch; /* Suavidad en iPhone */
-            }
-            nav ul::-webkit-scrollbar {
-                display: none;               /* Oculta la barra de scroll para que quede estético */
-            }
-            nav ul li {
-                flex: 0 0 auto;              /* Evita que los botones se encojan */
-            }
-            section {
-                scroll-margin-top: 80px;     /* El nav es bajito, no hace falta tanto margen */
-            }
+            justify-content: flex-start;
+            font-size: 0.9em;
         }
 
         /* CONTENEDOR PRINCIPAL */
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
             flex: 1;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* LOGO */
         .logo {
-            max-width: 250px;
+            max-width: 200px;
             height: auto;
-            margin-top: 30px;
-            margin-bottom: 15px;
+            margin-bottom: 30px;
+            opacity: 0.8;
         }
 
-        /* BLOQUE DE BIENVENIDA */
+        /* BLOQUE DE BIENVENIDA MINIMALISTA */
         .welcome-text {
-            font-size: 1em;
-            line-height: 1.6;
-            margin-top: 30px;
+            max-width: 600px;
+            margin-bottom: 40px;
             background: rgba(168, 230, 207, 0.03);
-            padding: 18px;
-            border-radius: 6px;
+            padding: 20px;
             border: 1px solid rgba(168, 230, 207, 0.15);
-            text-align: justify;
+            text-align: center;
+            line-height: 1.6;
         }
-        .welcome-text strong { color: #ffffff; }
 
-        /* SECCIONES DE CONTENIDO */
-        .sections-container {
-            margin-top: 50px;
+        /* RECUADRO DE LOGIN */
+        .login-box {
+            border: 1px solid #a8e6cf;
+            padding: 30px;
+            width: 100%;
+            max-width: 320px;
+            background: rgba(168, 230, 207, 0.02);
+            box-shadow: 0 0 20px rgba(168, 230, 207, 0.05);
+        }
+        .login-field {
+            margin-bottom: 20px;
             text-align: left;
         }
-        section {
-            margin-bottom: 50px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(168, 230, 207, 0.1);
-            scroll-margin-top: 70px; /* Evita que el menú tape el título */
+        .login-field label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.85em;
+            text-transform: uppercase;
         }
-        section h2 {
-            font-size: 1.2em;
+        .login-field input {
+            width: 100%;
+            background: #000;
+            border: 1px solid rgba(168, 230, 207, 0.5);
             color: #ffffff;
-            border-left: 3px solid #a8e6cf;
-            padding-left: 10px;
-            margin-bottom: 15px;
+            padding: 8px;
+            box-sizing: border-box;
+            outline: none;
+            font-family: 'Courier New', monospace;
         }
-        section p {
-            line-height: 1.6;
-            color: #a8e6cf;
-            font-size: 0.95em;
+        .login-field input:focus {
+            border-color: #ffffff;
+            box-shadow: 0 0 5px #a8e6cf;
+        }
+        .login-btn {
+            width: 100%;
+            background: #a8e6cf;
+            color: #000;
+            border: none;
+            padding: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            transition: all 0.3s ease;
+        }
+        .login-btn:hover {
+            background: #ffffff;
+            letter-spacing: 2px;
         }
 
-        /* CURSOR PARPADEANTE */
+        /* CURSOR Y ANIMACIÓN */
         .cursor {
             display: inline-block;
-            width: 1ch;
+            width: 10px;
+            height: 2px;
             background-color: #a8e6cf;
+            margin-left: 5px;
             animation: blink 1s step-end infinite;
-            height: 1.2em;
-            vertical-align: middle;
         }
         @keyframes blink { 50% { opacity: 0; } }
 
-        /* PIE DE PÁGINA */
         footer {
             text-align: center;
-            padding: 15px;
-            font-size: 0.75em;
+            padding: 20px;
+            font-size: 0.8em;
             color: #444;
-            border-top: 1px solid #1a1a1a;
         }
+        footer a { color: #666; text-decoration: none; }
     </style>
 </head>
 <body>
 
     <nav>
-        <ul>
-            <li><a href="#quienes-somos">#Quiénes somos</a></li>
-            <li><a href="#que-hacemos">#Qué hacemos</a></li>
-            <li><a href="#proyectos">#Proyectos</a></li>
-            <li><a href="#comunidad">#Comunidad</a></li>
-        </ul>
+        [root@d3adk0m:~#] - [ IP: <span id="ip-addr">0.0.0.0</span> ] <span class="cursor"></span>
     </nav>
 
     <div class="container">
         <img src="logo.png" alt="d3adk0m Logo" class="logo">
 
         <div class="welcome-text">
-            Bienvenido a la comunidad de <strong>d3adk0m</strong>. Has llegado a un espacio diseñado por y para la curiosidad tecnológica. Si estás aquí, es probable que alguien de nuestro entorno te haya invitado a conocernos. Si no es así, y has llegado por tu cuenta, te invitamos a explorar nuestra filosofía y descubrir qué nos mueve. En <strong>d3adk0m</strong>, la puerta siempre está abierta para quienes comparten nuestra visión del mundo digital <span class="cursor"></span>
+            Bienvenido al nodo <strong>d3adk0m</strong>. El acceso a la infraestructura principal requiere validación de identidad.
         </div>
 
-        <div class="sections-container">
-            <section id="quienes-somos">
-                <h2># Quiénes somos</h2>
-                <p>Somos un colectivo global y diverso unido por la cultura <strong>Open Source</strong> y los sistemas <strong>GNU/Linux</strong>. Lo que comenzó allá por el año 1998 como un laboratorio de experimentación de la mano de <strong>x-0ert</strong> ha crecido hasta convertirse en un ecosistema colaborativo donde perfiles de todos los niveles, desde entusiastas que dan sus primeros pasos hasta profesionales experimentados, comparten un mismo afán de mejora continua.</p>
-                <p>En nuestro grupo no importa de dónde vienes o cuánto sabes, sino hacia dónde quieres ir. Creemos firmemente en la inclusión técnica: la única condición innegociable para formar parte de este proyecto es el compromiso ético, el respeto mutuo y una voluntad real de colaborar con la comunidad.</p>
-            </section>
-
-            <section id="que-hacemos">
-                <h2># Qué hacemos</h2>
-                <p>Nuestra actividad se centra en transformar conceptos complejos en soluciones técnicas accesibles que luego compartimos con nuestra comunidad. No nos limitamos a la teoría; bajamos al detalle de la implementación para asegurar que cada solución sea funcional y replicable. Entendemos que el valor de la tecnología no solo reside en su potencia, sino en la capacidad de ser comprendida y utilizada correctamente por quienes la necesitan.</p>
-                <p>Más allá de la implementación técnica, invertimos gran parte de nuestro esfuerzo en la <strong>divulgación estratégica</strong>. Creemos que el conocimiento no debe ser un privilegio de pocos, por lo que creamos y publicamos continuamente contenido a través de diversos canales y plataformas. Desde laboratorios prácticos hasta guías de despliegue, nuestro objetivo es claro: <strong>democratizar el acceso al conocimiento técnico</strong>, eliminando las barreras de entrada y fomentando una cultura donde la seguridad y la administración de sistemas sean recursos abiertos para cualquier mente inquieta.</p>
-            </section>
-
-            <section id="proyectos">
-                <h2># Proyectos</h2>
-                <p>Entendemos el tiempo como nuestro recurso más valioso. Por ello, trabajamos de forma voluntaria y flexible, integrando nuestros desarrollos en el día a día de nuestras responsabilidades profesionales. Esta libertad es la que nos permite mantener la pasión por lo que hacemos sin presiones externas.</p>
-                <p>Nuestras iniciativas actuales se enfocan en la <strong>automatización y la optimización</strong>. Desarrollamos herramientas y scripts diseñados para simplificar tareas técnicas complejas, buscando siempre que la gestión de sistemas sea más fluida y eficiente. Todo lo que nace como una solución interna acaba siendo documentado y compartido, bajo la premisa de que cada pequeño aporte individual fortalece el valor del conjunto.</p>
-            </section>
-
-            <section id="comunidad">
-                <h2># Comunidad</h2>
-                <p>La comunidad de <strong>d3adk0m</strong> se construye sobre un pilar fundamental: la confianza. Aunque el acceso a nuestras plataformas principales está restringido a miembros invitados, siempre estamos atentos a nuevos perfiles que demuestren un interés sincero y ganas de sumar su talento al nuestro.</p>
-                
-                <div class="contacto-container">
-                    <h3>¿Quieres unirte a la comunidad?</h3>
-                    <p>Únete a nuestro grupo de recepción en Telegram para obtener tu invitación a Element.</p>
-                    <a href="https://t.me/+UmUxQf3-wTY5MzZk" class="btn-telegram">
-                        <span>✈️</span> Entrar al Grupo de Recepción
-                    </a>
-                </div>
-            </section>
-            
-            
-            <style>
-                /* Contenedor principal de la llamada a la acción */
-                .contacto-container {
-                    margin-top: 30px;
-                    background: rgba(168, 230, 207, 0.05);
-                    padding: 30px;
-                    border: 1px dashed rgba(168, 230, 207, 0.3);
-                    border-radius: 4px;
-                    text-align: center; /* Centra el contenido para que destaque */
-                }
-                
-                /* Estilo del botón de Telegram */
-                .btn-telegram {
-                    display: inline-block;
-                    background-color: #a8e6cf;
-                    color: #000 !important; /* Forzamos el color negro para que se lea bien */
-                    text-decoration: none;
-                    padding: 15px 30px;
-                    font-family: 'Courier New', Courier, monospace;
-                    font-weight: bold;
-                    border-radius: 4px;
-                    transition: all 0.3s ease;
-                    margin-top: 15px;
-                    text-transform: uppercase;
-                    letter-spacing: 1px;
-                }
-                
-                .btn-telegram:hover {
-                    background-color: #ffffff;
-                    box-shadow: 0 0 20px rgba(168, 230, 207, 0.6);
-                    transform: translateY(-2px); /* Un pequeño efecto de elevación */
-                }
-                
-                .btn-telegram span {
-                    margin-right: 10px;
-                }
-            </style>
+        <!-- RECUADRO DE LOGIN -->
+        <div class="login-box">
+            <div class="login-field">
+                <label>USER_ID ></label>
+                <input type="text" autocomplete="off">
+            </div>
+            <div class="login-field">
+                <label>PASS_KEY ></label>
+                <input type="password">
+            </div>
+            <button class="login-btn" onclick="alert('ACCESS DENIED: Unauthorized attempt logged.')">EXECUTE LOGIN</button>
         </div>
+
+        <p style="margin-top: 30px; font-size: 0.85em;">
+            ¿Sin credenciales? <a href="mailto:d3adk0m@tuta.io" style="color: #a8e6cf;">Solicitar acceso</a>
+        </p>
     </div>
 
-<footer>
-    [root@d3adk0m:~#] 2026 d3adk0m community. 
-    <br>
-    Este proyecto es <strong>Open Source</strong>. Siéntete libre de colaborar, compartir y aprender.
-</footer>
+    <footer>
+        &copy; 1998 - 2026 d3adk0m group. All rights reserved.
+    </footer>
 
+    <script>
+        // Captura de IP real del visitante
+        fetch('https://api.ipify.org')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('ip-addr').textContent = data.ip;
+            })
+            .catch(() => {
+                document.getElementById('ip-addr').textContent = "LOCAL_ENV";
+            });
+    </script>
 </body>
 </html>
